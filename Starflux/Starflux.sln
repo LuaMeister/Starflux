@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starflux", "Starflux.csproj", "{FF70BA2A-BEDE-41B8-8F1B-D9A7524C2BFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF70BA2A-BEDE-41B8-8F1B-D9A7524C2BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF70BA2A-BEDE-41B8-8F1B-D9A7524C2BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF70BA2A-BEDE-41B8-8F1B-D9A7524C2BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF70BA2A-BEDE-41B8-8F1B-D9A7524C2BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
