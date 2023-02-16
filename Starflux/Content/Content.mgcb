@@ -13,3 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Scenes/ExperimentScene.xml
+/copy:Scenes/ExperimentScene.xml
+

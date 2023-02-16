@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using StarfluxEngine.SceneManagement;
 
 namespace Starflux;
 
@@ -12,13 +14,14 @@ public class Game1 : Game
 	public Game1()
 	{
 		_graphics = new GraphicsDeviceManager(this);
-		Content.RootDirectory = "Content";
+		Content.RootDirectory = "DesktopGLContent";
 		IsMouseVisible = true;
+		
 	}
 
 	protected override void Initialize()
 	{
-		// TODO: Add your initialization logic here
+		
 
 		base.Initialize();
 	}
@@ -26,8 +29,9 @@ public class Game1 : Game
 	protected override void LoadContent()
 	{
 		_spriteBatch = new SpriteBatch(GraphicsDevice);
-
-		// TODO: use this.Content to load your game content here
+		
+		SceneManager.ContentManager = Content;
+		SceneManager.LoadScene(1);
 	}
 
 	protected override void Update(GameTime gameTime)
