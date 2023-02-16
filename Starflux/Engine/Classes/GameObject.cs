@@ -1,6 +1,6 @@
 ﻿
 using System.Collections.Generic;
-namespace Starflux.Engine;
+namespace StarfluxEngine;
 
 public class GameObject
 {

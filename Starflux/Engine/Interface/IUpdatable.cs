@@ -1,5 +1,5 @@
 ﻿
-namespace Starflux.Engine;
+namespace StarfluxEngine;
 
 public interface IUpdatable
 {
