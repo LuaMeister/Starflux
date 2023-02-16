@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Content;
-
 namespace StarfluxEngine.SceneManagement;
 
 public static class SceneManager
@@ -33,12 +32,33 @@ public static class SceneManager
 		var sceneName = GetSceneName(sceneNumber);
 		var documentPath = GetDocumentPath(sceneName);
 		var sceneDocument = LoadSceneDocument(documentPath);
+
+		if (sceneDocument.DocumentElement != null)
+		{
+			foreach (XmlNode xmlNode in sceneDocument.DocumentElement.ChildNodes)
+			{
+				switch (xmlNode.Name)
+				{
+					case "Objects":
+						CreateObjects(xmlNode);
+						break;
+					default:
+						Console.WriteLine("XmlNode.Name is not recognized and will not be used, name: " + xmlNode.Name);
+						break;
+				}
+			}
+		}
 	}
 
 	#endregion
 
 	#region Private Methods
-	
+
+	private static void CreateObjects(XmlNode parentNode, Transform parentTransform = null)
+	{
+		Console.WriteLine("Creating objects rn " + parentNode.ChildNodes);
+	}
+
 	/// <summary>
 	/// Gets the path to the document where this scene should be at
 	/// </summary>
