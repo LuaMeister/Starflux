@@ -1,3 +1,9 @@
-﻿<root>
-    
-</root>
+﻿<Scene>
+    <Objects>
+        
+        <Player>
+            <Transform/>
+        </Player>
+        
+    </Objects>
+</Scene>

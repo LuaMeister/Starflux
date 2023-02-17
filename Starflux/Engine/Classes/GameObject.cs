@@ -4,6 +4,18 @@ namespace StarfluxEngine;
 
 public class GameObject
 {
+	#region Properties
+
+	public string Name { get; set; } = "GameObject";
+
+	#endregion
+	
+	#region Public Fields
+
+	public readonly Transform Transform;
+
+	#endregion
+	
 	#region Private Fields
 
 	private readonly List<Component> _components = new();
@@ -11,9 +23,28 @@ public class GameObject
 	private readonly List<IUpdatable> _updatableComponents = new();
 
 	#endregion
+
+	#region Constructors
+
+	private GameObject()
+	{
+		Transform = AddComponent<Transform>();
+	}
+
+	#endregion
 	
 	#region Public Methods
 
+	public static GameObject Instantiate()
+	{
+		GameObject gameObject = new();
+		
+		// TODO: Add To Scene
+		
+		return gameObject;
+	}
+	
+	
 	/// <summary>
 	/// Adds a component class of type componentType to the game object. C# Users can use a generic version.
 	/// </summary>

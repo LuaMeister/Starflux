@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Xml;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 namespace StarfluxEngine.SceneManagement;
 
@@ -56,8 +58,22 @@ public static class SceneManager
 
 	private static void CreateObjects(XmlNode parentNode, Transform parentTransform = null)
 	{
-		Console.WriteLine("Creating objects rn " + parentNode.ChildNodes);
+		foreach (XmlNode objectNode in parentNode.ChildNodes)
+		{
+			GameObject childObject = GameObject.Instantiate();
+
+			foreach (XmlNode componentNode in objectNode.ChildNodes)
+			{
+				switch (componentNode.Name)
+				{
+					case "Transform":
+						
+						break;
+				}
+			}
+		}
 	}
+	
 
 	/// <summary>
 	/// Gets the path to the document where this scene should be at
