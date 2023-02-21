@@ -1,5 +1,8 @@
 ﻿
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using StarfluxEngine.SceneManagement;
+
 namespace StarfluxEngine;
 
 public class GameObject
@@ -39,7 +42,7 @@ public class GameObject
 	{
 		GameObject gameObject = new();
 		
-		// TODO: Add To Scene
+		SceneManager.ActiveScene.GameObjects.Add(gameObject);
 		
 		return gameObject;
 	}
@@ -85,10 +88,10 @@ public class GameObject
 	/// <summary>
 	/// Calls the IDrawable.Draw() method on each component inside of list _drawableComponents.
 	/// </summary>
-	public void DrawComponents()
+	public void DrawComponents(SpriteBatch spriteBatch)
 	{
 		foreach (IDrawable drawableComponent in _drawableComponents)
-			drawableComponent.Draw();
+			drawableComponent.Draw(spriteBatch);
 	}
 
 	/// <summary>

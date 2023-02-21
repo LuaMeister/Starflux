@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace StarfluxEngine.SceneManagement;
 
 public static class SceneManager
@@ -34,20 +36,20 @@ public static class SceneManager
 		var sceneName = GetSceneName(sceneNumber);
 		var documentPath = GetDocumentPath(sceneName);
 		var sceneDocument = LoadSceneDocument(documentPath);
+		
+		ActiveScene = new Scene();
 
-		if (sceneDocument.DocumentElement != null)
+		if (sceneDocument.DocumentElement == null) return;
+		foreach (XmlNode xmlNode in sceneDocument.DocumentElement.ChildNodes)
 		{
-			foreach (XmlNode xmlNode in sceneDocument.DocumentElement.ChildNodes)
+			switch (xmlNode.Name)
 			{
-				switch (xmlNode.Name)
-				{
-					case "Objects":
-						CreateObjects(xmlNode);
-						break;
-					default:
-						Console.WriteLine("XmlNode.Name is not recognized and will not be used, name: " + xmlNode.Name);
-						break;
-				}
+				case "Objects":
+					CreateObjects(xmlNode);
+					break;
+				default:
+					Console.WriteLine("XmlNode.Name is not recognized and will not be used, name: " + xmlNode.Name);
+					break;
 			}
 		}
 	}
@@ -61,13 +63,25 @@ public static class SceneManager
 		foreach (XmlNode objectNode in parentNode.ChildNodes)
 		{
 			GameObject childObject = GameObject.Instantiate();
+			childObject.Name = objectNode.Name;
+			Transform transform = childObject.Transform;
 
 			foreach (XmlNode componentNode in objectNode.ChildNodes)
 			{
 				switch (componentNode.Name)
 				{
 					case "Transform":
-						
+						transform.Position = new Vector2(
+							float.Parse(componentNode.Attributes?["PositionX"]?.Value ?? "0"),
+							float.Parse(componentNode.Attributes?["PositionY"]?.Value ?? "0"));
+						break;
+					case "SpriteRenderer":
+						SpriteRenderer spriteRenderer = childObject.AddComponent<SpriteRenderer>();
+						spriteRenderer.Sprite = ContentManager.Load<Texture2D>(
+							componentNode.Attributes?["Sprite"]?.Value ?? "Sprites/Default");
+						break;
+					case "Children":
+						CreateObjects(componentNode, transform);
 						break;
 				}
 			}

@@ -1,7 +1,12 @@
 ﻿
+using Microsoft.Xna.Framework.Graphics;
 namespace StarfluxEngine;
 
 public interface IDrawable
 {
-	public void Draw();
+	#region Public Methods
+
+	public void Draw(SpriteBatch spriteBatch);
+
+	#endregion
 }

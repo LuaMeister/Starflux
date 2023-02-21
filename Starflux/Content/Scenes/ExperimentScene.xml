@@ -1,9 +1,8 @@
 ﻿<Scene>
     <Objects>
-        
         <Player>
             <Transform/>
+            <SpriteRenderer Sprite="Sprites/Ship"/>
         </Player>
-        
     </Objects>
 </Scene>

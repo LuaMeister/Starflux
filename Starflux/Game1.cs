@@ -21,8 +21,6 @@ public class Game1 : Game
 
 	protected override void Initialize()
 	{
-		
-
 		base.Initialize();
 	}
 
@@ -40,16 +38,18 @@ public class Game1 : Game
 		    Keyboard.GetState().IsKeyDown(Keys.Escape))
 			Exit();
 
-		// TODO: Add your update logic here
+		SceneManager.ActiveScene.UpdateScene();
 
 		base.Update(gameTime);
 	}
 
 	protected override void Draw(GameTime gameTime)
 	{
-		GraphicsDevice.Clear(Color.CornflowerBlue);
+		GraphicsDevice.Clear(Color.DarkRed);
 
-		// TODO: Add your drawing code here
+		_spriteBatch.Begin();
+		SceneManager.ActiveScene.DrawScene(_spriteBatch);
+		_spriteBatch.End();
 
 		base.Draw(gameTime);
 	}
