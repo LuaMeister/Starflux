@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using StarfluxEngine;
 using StarfluxEngine.SceneManagement;
 
 namespace Starflux;
@@ -38,6 +39,8 @@ public class Game1 : Game
 		    Keyboard.GetState().IsKeyDown(Keys.Escape))
 			Exit();
 
+		Time.DeltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
+		Time.TotalElapsedTime += Time.DeltaTime;
 		SceneManager.ActiveScene.UpdateScene();
 
 		base.Update(gameTime);
