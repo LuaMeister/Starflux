@@ -13,6 +13,12 @@ public class Scene
 	
 	#region Public Methods
 
+	public void StartScene()
+	{
+		foreach (GameObject gameObject in GameObjects)
+			gameObject.StartComponents();
+	}
+	
 	public void DrawScene(SpriteBatch spriteBatch)
 	{
 		foreach (GameObject gameObject in GameObjects)

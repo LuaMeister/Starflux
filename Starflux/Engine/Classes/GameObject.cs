@@ -84,6 +84,12 @@ public class GameObject
 	#endregion
 
 	#region Lifetime Methods
+	
+	public void StartComponents()
+	{
+		foreach (Component component in _components)
+			component.Start();
+	}
 
 	/// <summary>
 	/// Calls the IDrawable.Draw() method on each component inside of list _drawableComponents.
