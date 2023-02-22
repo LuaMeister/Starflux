@@ -1,8 +1,8 @@
 ﻿
+using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarfluxEngine.SceneManagement;
-
 namespace StarfluxEngine;
 
 public class SpriteRenderer : Component, IDrawable
@@ -13,15 +13,22 @@ public class SpriteRenderer : Component, IDrawable
 	public Color Color { get; set; } = Color.White;
 
 	#endregion
-	
+
 	#region Public Methods
 
 	public void Draw(SpriteBatch spriteBatch)
 	{
+		Console.WriteLine(GameObject.Transform.RotationRadians);
 		spriteBatch.Draw(
-			texture: Sprite,
-			position: GameObject.Transform.AbsolutePosition,
-			color: Color
+			Sprite,
+			GameObject.Transform.AbsolutePosition,
+			null,
+			Color,
+			GameObject.Transform.RotationRadians,
+			GameObject.Transform.Origin,
+			GameObject.Transform.Scale,
+			SpriteEffects.None,
+			0
 		);
 	}
 

@@ -52,6 +52,8 @@ public static class SceneManager
 					break;
 			}
 		}
+		
+		ActiveScene.StartScene();
 	}
 
 	#endregion
@@ -74,11 +76,34 @@ public static class SceneManager
 						transform.Position = new Vector2(
 							float.Parse(componentNode.Attributes?["PositionX"]?.Value ?? "0"),
 							float.Parse(componentNode.Attributes?["PositionY"]?.Value ?? "0"));
+						transform.Origin = new Vector2(
+							float.Parse(componentNode.Attributes?["OriginX"]?.Value ?? "0"),
+							float.Parse(componentNode.Attributes?["OriginY"]?.Value ?? "0"));
+						transform.Scale = new Vector2(
+							float.Parse(componentNode.Attributes?["ScaleX"]?.Value ?? "1"),
+							float.Parse(componentNode.Attributes?["ScaleY"]?.Value ?? "1"));
+						transform.Rotation = float.Parse(componentNode.Attributes?["Rotation"]?.Value ?? "0");
 						break;
 					case "SpriteRenderer":
 						SpriteRenderer spriteRenderer = childObject.AddComponent<SpriteRenderer>();
 						spriteRenderer.Sprite = ContentManager.Load<Texture2D>(
 							componentNode.Attributes?["Sprite"]?.Value ?? "Sprites/Default");
+						break;
+					case "Rotator":
+						Rotator rotator = childObject.AddComponent<Rotator>();
+						rotator.RotationSpeed = float.Parse(componentNode.Attributes?["RotationSpeed"]?.Value ?? "0");
+						break;
+					case "Bouncer":
+						Bouncer bouncer = childObject.AddComponent<Bouncer>();
+						bouncer.Amplitude = float.Parse(componentNode.Attributes?["Amplitude"]?.Value ?? "1");
+						break;
+					case "Scalar":
+						Scalar scalar = childObject.AddComponent<Scalar>();
+						scalar.Speed = float.Parse(componentNode.Attributes?["Speed"]?.Value ?? "1");
+						scalar.Amplitude = float.Parse(componentNode.Attributes?["Amplitude"]?.Value ?? "1");
+						break;
+					case "ShipController":
+						ShipController shipController = childObject.AddComponent<ShipController>();
 						break;
 					case "Children":
 						CreateObjects(componentNode, transform);
