@@ -1,8 +1,12 @@
 ﻿<Scene>
     <Objects>
         <Player>
-            <Transform/>
             <SpriteRenderer Sprite="Sprites/Ship"/>
+            <ShipController/>
+            <Rotator RotationSpeed="30"/>
+            <Scalar Amplitude="20"/>
+            <Bouncer Amplitude="5"/>
+            <Transform PositionX="0" PositionY="0" OriginX="0.5" OriginY="0.5" ScaleX="1" ScaleY="1"/>
         </Player>
     </Objects>
 </Scene>
